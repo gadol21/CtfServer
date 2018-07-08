@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <title>Team</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='bootstrap.min.css') }} rel="stylesheet" media="screen">
+    <script src={{ url_for('static', filename='bootstrap.min.js') }}></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Team</h2>
+        <form class="form-group" action="" method="post" style="max-width: 830px; padding: 20px; margin: auto">
+            <h2 class="">{{ team['name'] }}</h2>
+            <label for="name">Team name</label>
+            <input class="form-control" value="{{ team['name'] }}" id="name" name="name" required/>
+            <label for="password">Password</label>
+            <input class="form-control" value="{{ team['password'] }}" id="password" name="password" required/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Modify</button>
+        </form>
+        <form action="{{ url_for('.delete_team', team=team['name']) }}">
+            <button class="btn btn-danger btn-group-justified">Delete team</button>
+        </form>
+    </div>
+</body>

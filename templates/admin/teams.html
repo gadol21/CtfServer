@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <title>Teams</title>
+    <meta http-equiv="refresh" content="20" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='bootstrap.min.css') }} rel="stylesheet" media="screen">
+    <script src={{ url_for('static', filename='bootstrap.min.js') }}></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Teams</h2>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Team name</th>
+                <th>Score</th>
+            </tr>
+        {% for team in sort_by_score(teams) if not team.is_admin %}
+            <tr>
+                <th>
+                   <a href={{ url_for('.team', team=team['name']) }}> <div>{{ team['name'] }}</div></a>
+                </th>
+                <th>{{ compute_score(team) }}</th>
+            </tr>
+        {% endfor %}
+        </table>
+    <form action="{{ url_for('.add_team') }}">
+        <button class="btn btn-default btn-group-justified">Add team</button>
+    </form>
+    </div>
+</body>

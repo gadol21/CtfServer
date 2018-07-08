@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <title>Config</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='bootstrap.min.css') }} rel="stylesheet" media="screen">
+    <script src={{ url_for('static', filename='bootstrap.min.js') }}></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h2>Config Zone</h2>
+        </div>
+        <h4 class="text-center">Welcome Admin</h4>
+        <div class="btn-group btn-group-vertical btn-group-justified">
+            <a class="btn btn-default" href={{ url_for('.export_config') }}>Export config</a>
+            <a class="btn btn-default">
+                <form action="{{ url_for('.import_config') }}" method="post" enctype="multipart/form-data">
+                    <label for="config">Import Config</label>
+                    <input type="file" name="config" id="config" onchange="form.submit()"/>
+                </form>
+            </a>
+        </div>
+    </div>
+</body>

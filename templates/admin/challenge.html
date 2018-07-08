@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <title>Challenge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='bootstrap.min.css') }} rel="stylesheet" media="screen">
+    <script src={{ url_for('static', filename='bootstrap.min.js') }}></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Challenge</h2>
+        <form class="form-group" action="" method="post" style="max-width: 830px; padding: 20px; margin: auto">
+            <h2 class="">{{ challenge['name'] }}</h2>
+            <label for="name">Challenge name</label>
+            <input class="form-control" value="{{ challenge['name'] }}" id="name" name="name" required/>
+            <label for="description">Description</label>
+            <textarea class="form-control" rows="8" id="description" name="description" required>{{ challenge['description'] }}</textarea>
+            <label for="flag">Flag</label>
+            <input class="form-control" value="{{ challenge['flag'] }}" id="flag" name="flag" required/>
+            <label for="points">Points</label>
+            <input class="form-control" value="{{ challenge['points'] }}" id="points" name="points" required/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Modify</button>
+        </form>
+        <form action="{{ url_for('.delete_challenge', challenge=challenge['name']) }}">
+            <button class="btn btn-danger btn-group-justified">Delete challenge</button>
+        </form>
+    </div>
+</body>

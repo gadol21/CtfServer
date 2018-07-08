@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <title>Admin zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='bootstrap.min.css') }} rel="stylesheet" media="screen">
+    <script src={{ url_for('static', filename='bootstrap.min.js') }}></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h2>Control Panel</h2>
+        </div>
+        <h4 class="text-center">Welcome Admin</h4>
+        <div class="btn-group btn-group-vertical btn-group-justified">
+            <a class="btn btn-default" href={{ url_for('.challenges') }}>Manage challenges</a>
+            <a class="btn btn-default" href={{ url_for('.teams') }}>Manage teams</a>
+            <a class="btn btn-default" href={{ url_for('.config') }}>Import/Export server configuration</a>
+        </div>
+    </div>
+</body>

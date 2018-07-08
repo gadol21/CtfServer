@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <title>Challenges</title>
+    <meta http-equiv="refresh" content="20" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='bootstrap.min.css') }} rel="stylesheet" media="screen">
+    <script src={{ url_for('static', filename='bootstrap.min.js') }}></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Challenges</h2>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Challenge name</th>
+                <th>Solved by</th>
+                <th>Category</th>
+                <th>Score</th>
+            </tr>
+        {% for challenge in sort_challenges(challenges) %}
+            <tr>
+                <th>
+                    <a href="{{ url_for('.challenge', challenge=challenge['name']) }}"><div>{{ challenge['name'] }}</div></a>
+                </th>
+                <th>{{ team_solves[challenge['name']] | length }}</th>
+                <th>{{ challenge['category'] }}</th>
+                <th>{{ challenge['points'] }}</th>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+</body>

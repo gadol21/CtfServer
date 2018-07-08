@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <title>{{ challenge['name'] }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='bootstrap.min.css') }} rel="stylesheet" media="screen">
+    <script src={{ url_for('static', filename='bootstrap.min.js') }}></script>
+</head>
+<body>
+    <div class="container">
+        <h3>{{ challenge['description'] | safe }}</h3>
+        <form class="login" action="" method="post" style="max-width: 830px; padding: 20px; margin: auto">
+            <h2 class="">{{ challenge['name'] }}</h2>
+            <input class="form-control" placeholder="flag" name="flag" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit!</button>
+        </form>
+        <h2>This challenge was solved by:</h2>
+        <ul class="list-group">
+            {% for team in teams_that_solved(challenge['name']) %}
+                <li class="list-group-item">{{ team }}</li>
+            {% endfor %}
+        </ul>
+    {% if bad_flag %}
+        <h2 class="bg-danger">Wrong flag</h2>
+    {% endif %}
+    </div>
+</body>

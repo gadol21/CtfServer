@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <title>Team Deletion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='bootstrap.min.css') }} rel="stylesheet" media="screen">
+    <script src={{ url_for('static', filename='bootstrap.min.js') }}></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Team</h2>
+        <h3>Please reenter your password to delete the team {{ team }}</h3>
+        <form action="" method="post">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" placeholder="Password" id="password" name="password" required/>
+            <button class="btn btn-danger btn-group-justified">Delete team</button>
+        </form>
+        {% if bad_pass %}
+            <h2 class="bg-danger">Wrong password</h2>
+        {% endif %}
+    </div>
+</body>

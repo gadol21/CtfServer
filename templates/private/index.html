@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <title>Ctf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='bootstrap.min.css') }} rel="stylesheet" media="screen">
+    <script src={{ url_for('static', filename='bootstrap.min.js') }}></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h2>Team zone</h2>
+        </div>
+        <h4 class="text-center">Welcome {{ team.name }}</h4>
+        <div class="btn-group btn-group-vertical btn-group-justified">
+            <a class="btn btn-default" href={{ url_for('scoreboard') }}>Scoreboard</a>
+            <a class="btn btn-default" href={{ url_for('challenges') }}>Challenges</a>
+            {% if team.is_admin %}
+            <a class="btn btn-default bg-success" href={{ url_for('admin.root') }}>Admin Zone</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
